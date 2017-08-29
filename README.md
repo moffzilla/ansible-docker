@@ -16,4 +16,8 @@ Make sure you do
        'localhost ansible_connection=local'
        
   4) Execute
+      'export AWS_ACCESS_KEY_ID=[your key]'
+      
+      'export AWS_SECRET_ACCESS_KEY=[your secret]'
+      
       'ansible-playbook ec2_module.yml -vvvv --user=ubuntu'
