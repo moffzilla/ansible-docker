@@ -1,0 +1,67 @@
+---
+ec2_access_key: AKIAIY6HSUE6ZJQKOZYQ
+ec2_secret_key: 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
+ec2_region: us-east-1 
+ec2_zone: 
+# Canonical, Ubuntu, 16.04 LTS, amd64 xenial image build on 2017
+ec2_image: ami-1d4e7a66
+# ec2_instance_type: t2.medium
+# cores=2 mem=8G root-disk=30G
+ec2_instance_type: m4.large 
+ec2_keypair: generic-go-wk 
+ec2_security_group: ansible
+ec2_instance_count: 3
+ec2_tag: docker_server
+ec2_tag_webservers: webservers
+ec2_tag_dbservers: dbservers
+ec2_tag_lbservers: lbservers
+ec2_tag_monitoring: monitoring
+ec2_tag_name_prefix: dj
+ec2_hosts: all
+wait_for_port: 22
+
+# ditto for GCE
+gce_image: "dj_demo"
+gce_zone: "us-central1-f"
+gce_instance_count: 2
+gce_type:
+
+
+# Do you want to install Community Edition ('ce') or Enterprise Edition ('ee')?
+docker_edition: 'ce'
+
+# Do you want to install Docker through the 'stable' or 'edge' channel?
+# Stable gets updated every quarter and Edge gets updated every month.
+docker_channel: 'stable'
+
+# What version of Docker do you want to install?
+docker_version: '17.06.0'
+
+# Optionally install a specific version of Docker Compose.
+docker_install_docker_compose: True
+docker_compose_version: '1.14.0'
+
+# A list of users to be added to the Docker group. For example if you have a
+# user of 'deploy', then you'll want to set docker_users: ['deploy'] here.
+#
+# Keep in mind this user needs to already exist, it will not be created here.
+docker_users: []
+
+# A list of Docker options as they would appear on the command line, such as:
+# docker_options:
+#   - '--dns 8.8.8.8'
+docker_options: []
+
+# The APT GPG key id used to sign the Docker package.
+docker_apt_key: '9DC858229FC7DD38854AE2D88D81803C0EBFCD88'
+
+# The OS distribution and distribution release, thanks https://github.com/debops.
+# Doing it this way doesn't depend on having lsb-release installed.
+docker_distribution: ubuntu
+docker_distribution_release: xenial
+
+# Address of the Docker repository.
+docker_repository: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable'
+
+# How long should the apt-cache last in seconds?
+docker_apt_cache_time: 86400
