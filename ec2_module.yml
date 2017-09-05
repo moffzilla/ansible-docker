@@ -50,3 +50,10 @@
     - franklinkim.docker-compose
   vars:
     docker_compose_version: 1.5.1
+
+- hosts: launched
+  become: true 
+  remote_user: ubuntu
+  gather_facts: false
+  tasks:
+    - user: name=ubuntu groups=docker append=yes
