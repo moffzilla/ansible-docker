@@ -8,7 +8,7 @@ however all of the modules require and are tested against recent versions of bot
 Make sure you do:
 
   1) Make sure you can SSH locally with ubuntu
-    ( you may need to add your pub key content into the '~/.ssh/authorized_keys' )
+    (you may need to add your pub key content into the '~/.ssh/authorized_keys')
   
   2) Disable host checking
       '/etc/ansible/ansible.cfg'
@@ -21,10 +21,12 @@ Make sure you do:
   4) Install the following Roles:
   
   ansible-galaxy install franklinkim.docker
+  
   ansible-galaxy install franklinkim.docker-compose
   
   ( check the following links for details
   https://github.com/weareinteractive/ansible-docker
+  
   https://galaxy.ansible.com/franklinkim/docker-compose/ )
        
   4) Execute
