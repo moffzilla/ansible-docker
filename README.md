@@ -2,9 +2,19 @@
 
 This is a simple playbook for Provisioning an AWS instance and Installing Docker and Compose on top 
 
-Requirements for the AWS modules are minimal,
-however all of the modules require and are tested against recent versions of boto. You’ll need this Python module installed on your control machine. Boto can be installed from your OS distribution or python’s “pip install boto”.
+Requirements / Tested :
 
+  ansible 2.1.1.0
+  
+  Python 2.7.12+
+  
+  Amazon Web Services Library boto Version: 2.48.0
+  
+ 
+   You’ll need this Python module installed on your control machine. Boto can be installed from your OS distribution or python’s “pip install boto”.
+   
+  AWS AIM Credentials with enough rigths for launching VMS 
+  
 Make sure you do:
 
   1) Make sure you can SSH locally with ubuntu
