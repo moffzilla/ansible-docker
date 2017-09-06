@@ -45,4 +45,12 @@ Make sure you do:
       'export AWS_SECRET_ACCESS_KEY=[your secret]'
       
       'ansible-playbook ec2_module.yml -vvvv --user=ubuntu'
+      
+    To termniate an AWS Instance
+    
+    aws ec2 describe-instances | grep InstanceId
+    
+    aws ec2 terminate-instances --instance-ids [i-id]
+    
+    
 
