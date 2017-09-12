@@ -30,10 +30,10 @@ Make sure you do:
   
   4) Install the following Roles:
   
- ansible-galaxy install -r requirements.yml
+ ansible-galaxy install moffzilla.docker.tar
  
  
- ( you can also simply download moffzilla.docker and place it under default ansible roles folder   /etc/ansible/roles/moffzilla.docker )
+ ( you can also simply download moffzilla.docker and place it under default ansible roles folder   /etc/ansible/roles/moffzilla.docker or pull it from the github repo directly  )
  
        
   4) Execute
