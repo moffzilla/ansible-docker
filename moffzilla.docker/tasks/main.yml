@@ -1,0 +1,80 @@
+---
+- name: 'Install apt-transport-https'
+  apt:
+    name: 'apt-transport-https'
+
+- name: 'Install ca-certificates'
+  apt:
+    name: 'ca-certificates'
+
+- name: 'Install curl'
+  apt:
+    name: 'curl'
+
+- name: 'Install software-properties-common'
+  apt:
+    name: 'software-properties-common'
+
+- name: 'Add the docker apt signing key'
+  apt_key:
+    id: '0EBFCD88'
+    url: 'https://download.docker.com/linux/ubuntu/gpg'
+    state: 'present'
+  notify: 'docker-apt-get-update'
+
+- name: 'Add the official docker repo'
+  apt_repository:
+    repo: 'deb https://download.docker.com/linux/ubuntu xenial stable'
+    state: 'present'
+  notify: 'docker-apt-get-update'
+
+- meta: flush_handlers
+
+- name: 'Install docker'
+  apt:
+    name: 'docker-ce'
+    state: 'latest'
+
+- name: 'Add any additional service startup options to the DOCKER_OPTS config variable'
+  lineinfile:
+    dest: '/etc/default/docker'
+    state: 'present'
+    line: 'DOCKER_OPTS="{{docker_additional_service_opts}}"'
+    regexp: '^DOCKER_OPTS='
+    owner: 'root'
+    group: 'root'
+    mode: '0644'
+  notify: 'docker-restart-service'
+
+- name: 'Start the docker service'
+  service:
+    name: 'docker'
+    state: 'started'
+    enabled: 'yes'
+
+- name: 'Ensure that the docker service is functional'
+  docker_ping:
+  register: result
+  retries: 5
+  delay: 10
+  until: result|success
+
+- name: 'Install python-pip'
+  apt:
+    name: 'python-pip'
+    state: 'present'
+
+- name: 'Install virtualenv'
+  pip:
+    name: 'virtualenv'
+    state: 'present'
+
+#- name: 'Install docker-py'
+#  pip:
+#    name: 'docker-py'
+#    state: 'present'
+
+- name: 'Install docker compose'
+  pip:
+    name: 'docker-compose'
+    state: 'present'
