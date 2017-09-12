@@ -47,7 +47,7 @@
 - hosts: launched
   sudo: yes
   roles:
-    - moffzilla.docker
+    - ADC
   vars:
     docker_compose_version: 1.16.1
 
