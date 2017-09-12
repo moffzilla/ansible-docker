@@ -1,6 +1,7 @@
 # Ansible-docker
 
-This is a simple playbook for Provisioning an AWS instance and Installing Docker and Compose on top 
+This is a simple playbook for Provisioning an AWS instance and Installing Docker-CE and compatible Docker Compose
+as described in Docker Documentation, inlcuding recommended packages. 
 
 Requirements / Tested :
 
