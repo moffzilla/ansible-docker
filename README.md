@@ -29,14 +29,11 @@ Make sure you do:
   
   4) Install the following Roles:
   
-  ansible-galaxy install franklinkim.docker
-  
-  ansible-galaxy install franklinkim.docker-compose
-  
-  ( check the following links for details
-  https://github.com/weareinteractive/ansible-docker
-  
-  https://galaxy.ansible.com/franklinkim/docker-compose/ )
+ ansible-galaxy install -r requirements.yml
+ 
+ 
+ ( you can also simply download moffzilla.docker and place it under default ansible roles folder   /etc/ansible/roles/moffzilla.docker )
+ 
        
   4) Execute
       'export AWS_ACCESS_KEY_ID=[your key]'
@@ -45,7 +42,8 @@ Make sure you do:
       
       'ansible-playbook ec2_module.yml -vvvv --user=ubuntu'
       
-    To termniate an AWS Instance
+    To terminate any AWS Instance created
+    (it requires you to have installed aws cli)
     
     aws ec2 describe-instances | grep InstanceId
     
