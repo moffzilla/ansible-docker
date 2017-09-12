@@ -1,2 +1,2 @@
-- src: git+https://moffzilla/ansible-docker/tree/master/moffzilla.docker
+- src: https://github.com/moffzilla/ADC
   version: master
