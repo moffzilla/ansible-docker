@@ -28,13 +28,8 @@ Make sure you do:
        '/etc/ansible/host'
        'localhost ansible_connection=local'
   
-  4) Install the following Roles:
-  
- ansible-galaxy install moffzilla.docker.tar
- 
- 
- ( you can also simply download moffzilla.docker and place it under default ansible roles folder   /etc/ansible/roles/moffzilla.docker or pull it from the github repo directly  )
- 
+  4) Install the 'moffzilla.docker' Roles by copying folder 'moffzilla.docker' into '/etc/ansible/roles/'
+
        
   4) Execute
       'export AWS_ACCESS_KEY_ID=[your key]'
