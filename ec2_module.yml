@@ -1,3 +1,4 @@
+---
 - name: Create a Docker Compose Host for testing
   hosts: localhost
   gather_facts: False
@@ -33,10 +34,10 @@
         delay: 60
         timeout: 320
         state: started
-      with_items: "{{ ec2.instances }}"    
+      with_items: "{{ ec2.instances }}"
 
 - hosts: launched
-  become: true 
+  become: true
   remote_user: ubuntu
   gather_facts: false
   tasks:
@@ -46,13 +47,12 @@
 - hosts: launched
   sudo: yes
   roles:
-    - franklinkim.docker
-    - franklinkim.docker-compose
+    - moffzilla.docker
   vars:
-    docker_compose_version: 1.5.1
+    docker_compose_version: 1.16.1
 
 - hosts: launched
-  become: true 
+  become: true
   remote_user: ubuntu
   gather_facts: false
   tasks:
