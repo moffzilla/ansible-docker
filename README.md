@@ -45,12 +45,26 @@ Make sure you do:
       
       'ansible-playbook ec2_module.yml -vvvv --user=ubuntu'
       
+      
     To terminate any AWS Instance created
     (it requires you to have installed aws cli)
     
-    aws ec2 describe-instances | grep InstanceId
+    A) To remove all the Machines execute Script
     
-    aws ec2 terminate-instances --instance-ids [i-id]
+    './terminate_all_instances.py' 
+    
+    B) To remove an specific machine execute Script
+    
+    './list_instances.py'
+    
+    './terminate_instances.py [instance-id]'
+    
+    C) Manually by AWS CLI
+    
+    'aws ec2 describe-instances | grep InstanceId'
+    
+    'aws ec2 terminate-instances --instance-ids [i-id]'
+    
     
     
 
