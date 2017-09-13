@@ -30,7 +30,7 @@ Make sure you do:
        '/etc/ansible/host'
        'localhost ansible_connection=local'
   
-  4) Install the 'moffzilla.docker' Roles 
+  4) Install the 'moffzilla.docker' AKA 'ADC' Role 
   
   ansible-galaxy install -r requirements.yml
   
