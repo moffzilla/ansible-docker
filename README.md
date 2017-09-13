@@ -9,9 +9,11 @@ Requirements / Tested :
   
   Python 2.7.12+
   
-  Amazon Web Services Library boto Version: 2.48.0
+  Amazon Web Services Library boto3 & AWS CLI 
  
-   You’ll need this Python module installed on your control machine. Boto can be installed from your OS distribution or python’s “pip install boto”.
+   You’ll need AWS CLI & this Python module installed on your control machine. Boto can be installed from your OS distribution or python’s using the pip command, install the AWS CLI and Boto3:
+
+   'pip install awscli boto3 -U --ignore-installed six'”.
    
   AWS AIM Credentials with enough rigths for launching VMS and of course, if you reference a resource in AWS, such as a Security Group, make sure that the SG exists and it is properly configured, etc. 
   
