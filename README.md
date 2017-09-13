@@ -44,9 +44,10 @@ Make sure you do:
       'export AWS_SECRET_ACCESS_KEY=[your secret]'
       
       'ansible-playbook ec2_module.yml -vvvv --user=ubuntu'
-      
-      
-    To terminate any AWS Instance created
+    
+    Wait for the plays to complete
+    
+   5) To terminate any AWS Instance created
     (it requires you to have installed aws cli)
     
     A) To remove all the Machines execute Script
