@@ -5,7 +5,7 @@
   gather_facts: False
   vars:
     key_name: generic-cloud-wk
-    instance_type: m4.large
+    instance_type: m3.2xlarge
     security_group: openshift
     image: ami-da25dea0
     region: us-east-1
@@ -27,4 +27,20 @@
         hostname: "{{ item.public_ip }}"
         groupname: launched
       with_items: "{{ ec2.instances }}"
+
+    - name: Wait for SSH to come up
+      wait_for:
+        host: "{{ item.public_dns_name }}"
+        port: 22
+        delay: 60
+        timeout: 320
+        state: started
+      with_items: "{{ ec2.instances }}"
+   
+- hosts: launched
+  become: true
+  remote_user: fedora
+  gather_facts: false
+  tasks:
+    - user: name=fedora groups=root append=yes
 
