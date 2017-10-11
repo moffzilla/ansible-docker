@@ -64,6 +64,32 @@ Make sure you do:
     You can test you have enough size by pulling the OpenShift docker image 
 
 	'docker pull openshift/origin'
+	
+	If succesful you can follow the Installing and Starting an All-in-One Server
+	
+	$ sudo docker run -d --name "origin" \
+        --privileged --pid=host --net=host \
+        -v /:/rootfs:ro -v /var/run:/var/run:rw -v /sys:/sys -v /sys/fs/cgroup:/sys/fs/cgroup:rw \
+        -v /var/lib/docker:/var/lib/docker:rw \
+        -v /var/lib/origin/openshift.local.volumes:/var/lib/origin/openshift.local.volumes:rslave \ 
+        openshift/origin start
+	
+	This command:
+
+	starts OpenShift Origin listening on all interfaces on your host (0.0.0.0:8443),
+
+	starts the web console listening on all interfaces at /console (0.0.0.0:8443),
+
+	launches an etcd server to store persistent data, and launches the Kubernetes system components.
+	
+	More information at :
+	
+	https://docs.openshift.org/latest/getting_started/administrators.html#try-it-out
+	
+	http://www.projectatomic.io/docs/docker-storage-recommendation/
+	
+	https://spin.atomicobject.com/2011/02/24/resizing-lvm-volumes-on-a-virtual-linux-host-without-reboot/
+	
     
    5) To terminate any AWS Instance created
     (it requires you to have installed aws cli)
