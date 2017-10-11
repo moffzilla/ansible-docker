@@ -37,7 +37,7 @@ Make sure you do:
 ( More information at https://github.com/moffzilla/ADC )
 
        
-  4) Execute
+  4) Execute (Generic)
   
       'export AWS_ACCESS_KEY_ID=[your key]'
       
@@ -46,6 +46,24 @@ Make sure you do:
       'ansible-playbook ec2_module.yml -vvvv --user=ubuntu'
     
     Wait for the plays to complete
+
+  4.1) Deploy an Atomic host ( useful for testing OpenShift Origins containerized )
+
+      'export AWS_ACCESS_KEY_ID=[your key]'
+
+      'export AWS_SECRET_ACCESS_KEY=[your secret]'
+
+      'ansible-playbook ec2_module-openshift.yml -vvvv --user=fedora'
+
+    Wait for the plays to complete 
+
+    If you want to test containerized run OpenShift origins increase the size of the Logical Volume by login and running
+
+	'lvextend -l +100%FREE atomicos/docker-root-lv'
+
+    You can test you have enough size by pulling the OpenShift docker image 
+
+	'docker pull openshift/origin'
     
    5) To terminate any AWS Instance created
     (it requires you to have installed aws cli)
