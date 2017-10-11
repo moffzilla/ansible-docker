@@ -59,7 +59,7 @@ Make sure you do:
 
     If you want to test containerized run OpenShift origins increase the size of the Logical Volume by login (with fedora user) and running
 
-	'lvextend -l +100%FREE atomicos/docker-root-lv'
+	'sudo lvextend -l +100%FREE atomicos/docker-root-lv'
 
     You can test you have enough size by pulling the OpenShift docker image 
 
