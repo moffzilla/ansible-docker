@@ -1,12 +1,13 @@
 ---
-- name: Create a Docker Compose Host for testing
+- name: Create a Atomic host for testing
+# Please note that default user is "fedora"
   hosts: localhost
   gather_facts: False
   vars:
     key_name: generic-cloud-wk
     instance_type: m4.large
     security_group: openshift
-    image: ami-1d4e7a66
+    image: ami-da25dea0
     region: us-east-1
   tasks:
     - name: Launch instance
@@ -27,33 +28,3 @@
         groupname: launched
       with_items: "{{ ec2.instances }}"
 
-    - name: Wait for SSH to come up
-      wait_for:
-        host: "{{ item.public_dns_name }}"
-        port: 22
-        delay: 60
-        timeout: 320
-        state: started
-      with_items: "{{ ec2.instances }}"
-
-- hosts: launched
-  become: true
-  remote_user: ubuntu
-  gather_facts: false
-  tasks:
-    - name: Install Python
-      raw: sudo apt install -y python-minimal
-
-- hosts: launched
-  sudo: yes
-  roles:
-    - ADC
-  vars:
-    docker_compose_version: 1.16.1
-
-- hosts: launched
-  become: true
-  remote_user: ubuntu
-  gather_facts: false
-  tasks:
-    - user: name=ubuntu groups=docker append=yes
