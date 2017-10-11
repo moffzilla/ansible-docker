@@ -57,7 +57,7 @@ Make sure you do:
 
     Wait for the plays to complete 
 
-    If you want to test containerized run OpenShift origins increase the size of the Logical Volume by login and running
+    If you want to test containerized run OpenShift origins increase the size of the Logical Volume by login (with fedora user) and running
 
 	'lvextend -l +100%FREE atomicos/docker-root-lv'
 
