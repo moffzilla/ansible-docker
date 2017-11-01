@@ -55,5 +55,36 @@
   become: true
   remote_user: ubuntu
   gather_facts: false
+  vars:
+    dev_version: "dev142"
   tasks:
-    - user: name=ubuntu groups=docker append=yes
+    - name: Add Ubuntu user to Docker group
+      user: name=ubuntu groups=docker append=yes
+
+#    - name: Transfer CVaaS Testing Scripts  
+#      copy:
+#        src: /root/Moff/Projects/ATT/CVaaS/git-repo/stage-area/cicd/cvaas-test-script.sh
+#        dest: /home/ubuntu/cvaas-test-script.sh
+#        owner: ubuntu
+#        group: ubuntu
+#        mode: 0777
+
+    - name: Stage CVaaS Load    
+      unarchive: 
+        src: /root/Moff/Projects/ATT/CVaaS/git-repo/stage-area/cvaas-staging/dist/cvaas-0.0.1.{{dev_version}}.tar.gz
+        dest: /home/ubuntu/
+        remote_src: yes
+
+    - name: Build CVaaS image
+      command: docker build -t cvaas /home/ubuntu/cvaas-0.0.1.{{dev_version}}/
+
+    - name: Build and run CVaaS Ms
+      command: docker-compose -f /home/ubuntu/cvaas-0.0.1.{{dev_version}}/docker-compose.yaml up -d --build --scale cvaas-worker=2
+
+#    - name: Execute CVaaS Sanity test
+#      shell: cvaas-test-script.sh >> cvaas-0.0.1.{{dev_version}}.log
+#      args:
+#        chdir: /home/ubuntu
+#        creates: cvaas-0.0.1.{{dev_version}}.log  
+            
+
