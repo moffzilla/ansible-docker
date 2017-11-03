@@ -101,6 +101,10 @@
       args:
         chdir: /home/ubuntu/cvaas-0.0.1.{{dev_version}}/
         creates: /home/ubuntu/cvaas-0.0.1.{{dev_version}}/cvaas-0.0.1.{{dev_version}}.log
+    
+    - fetch:
+        src: /home/ubuntu/cvaas-0.0.1.{{dev_version}}/cvaas-0.0.1.{{dev_version}}.log
+        dest: /root/Moff/Projects/ATT/CVaaS/git-repo/stage-area/Logs/
 
 #    - script: /root/Moff/Projects/ATT/CVaaS/git-repo/stage-area/cicd/{{cvaas_sanity_test_script}} {{elasticsearch}} {{redis}}
 #      args:

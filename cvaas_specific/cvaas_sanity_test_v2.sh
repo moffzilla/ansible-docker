@@ -81,22 +81,31 @@ dump_docker_logs()
 # Main body of script starts here
 ###
 dev_rel=$1
-audit_test_exec=$( 1 2 )
+
     load_cvaas_template $dev_rel
     sleep 5
-#    for i in ${audit_test_exec}
-#      do
-        run_cvaas_audit $dev_rel
+    
+#    for i in {1..4}
+#    do
+#     echo "Running test $i times"
+     run_cvaas_audit $dev_rel
+#        sleep 5
+#    done
+      run_cvaas_audit $dev_rel
         sleep 5
-        run_cvaas_audit $dev_rel
-        sleep 5
-#      done
+
 #    stop_cvaas_worker $dev_rel
 #    sleep 5
+
+    run_cvaas_audit $dev_rel
+        sleep 5
+
     verify_elasticsearch $dev_rel
     sleep 5
+
     verify_docker $dev_rel
     sleep 5
+
     dump_docker_logs $dev_rel
 
 ###
