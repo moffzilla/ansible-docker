@@ -41,7 +41,8 @@ run_cvaas_audit()
         redis=$(docker inspect cvaas001$1_redis_1 | grep 172.18.0 | grep IPAddress | awk -F'"' '{print $4}')
         #echo $redis
     echo "Run CVaaS vMME Audit [Sanity test]....\n"
-        python tools/onap-pipe.py -H $redis -d tools/data/config/vcvaas.config >> /home/ubuntu/cvaas-0.0.1.$1/cvaas-0.0.1.$1.log
+        #python tools/onap-pipe.py -H $redis -d tools/data/config/vcvaas.config >> /home/ubuntu/cvaas-0.0.1.$1/cvaas-0.0.1.$1.log
+        python tools/onap-pipe.py -H $redis -d tools/data/config/ConfigFile_from_export_20170530.txt >> /home/ubuntu/cvaas-0.0.1.$1/cvaas-0.0.1.$1.log
         sleep 5
 }
 

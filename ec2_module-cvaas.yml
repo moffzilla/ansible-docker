@@ -56,8 +56,8 @@
   remote_user: ubuntu
   gather_facts: false
   vars:
-    dev_version: "dev201"
-#    dev_version: "dev142"
+#    dev_version: "dev201"
+    dev_version: "dev247"
 #    repo_name: "cvaas-staging"
     repo_name: "gitlab-cvaas-staging"
     cvaas_sanity_test_script: "cvaas_sanity_test_V2.sh"
