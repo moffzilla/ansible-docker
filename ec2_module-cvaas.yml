@@ -5,6 +5,7 @@
   vars:
     key_name: generic-cloud-wk
     instance_type: m4.large
+#    instance_type: m4.2xlarge
     security_group: cvaas
     image: ami-1d4e7a66
     region: us-east-1
@@ -42,7 +43,7 @@
   gather_facts: false
   tasks:
     - name: Install Python
-      raw: sudo apt install -y python-minimal
+      raw: sudo apt update && sudo apt install -y python-minimal
 
 - hosts: launched
   sudo: yes
@@ -56,11 +57,11 @@
   remote_user: ubuntu
   gather_facts: false
   vars:
-#    dev_version: "dev201"
-    dev_version: "dev145"
+#    dev_version: "dev297"
+    dev_version: "dev146"
     repo_name: "cvaas-staging"
 #    repo_name: "gitlab-cvaas-staging"
-    cvaas_sanity_test_script: "cvaas_sanity_test_V2.sh"
+    cvaas_sanity_test_script: "cvaas_sanity_test_v2.sh"
   tasks:
     - name: Add Ubuntu user to Docker group
       user: name=ubuntu groups=docker append=yes

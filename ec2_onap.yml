@@ -4,11 +4,12 @@
   gather_facts: False
   vars:
     key_name: generic-cloud-wk
-    instance_type: m4.large
-    security_group: rancher
+#    instance_type: m4.large
+    instance_type: m3.2xlarge
+    security_group: onap
     image: ami-1d4e7a66
     region: us-east-1
-    count: 4
+    count: 1
   tasks:
     - name: Launch instance
       ec2:
@@ -44,7 +45,7 @@
   gather_facts: false
   tasks:
     - name: Install Python
-      raw: sudo apt install -y python-minimal
+      raw: sudo apt update && sudo apt install -y python-minimal
 
 - hosts: launched
   sudo: yes
@@ -62,4 +63,13 @@
 
 # README
 # sudo docker run -d --restart=unless-stopped -p 8080:8080 rancher/server:stable
+# http://rancher.com/docs/rancher/v1.6/en/quick-start-guide/
 #https://wiki.onap.org/display/DW/ONAP+on+Kubernetes#ONAPonKubernetes-UndercloudInstallation
+#
+#https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169
+#sudo mkdir /mnt/onap
+#sudo chmod 777 /mnt/onap
+#sudo service docker stop
+#sudo mv /var/lib/docker /mnt/docker
+#sudo ln -s /mnt/docker /var/lib/docker
+#sudo service docker start

@@ -92,7 +92,7 @@ dev_rel=$1
 #    for i in {1..4}
 #    do
 #     echo "Running test $i times"
-     run_cvaas_audit $dev_rel
+#     run_cvaas_audit $dev_rel
 #        sleep 5
 #    done
       run_cvaas_audit $dev_rel
