@@ -30,7 +30,7 @@ load_cvaas_template()
         #echo $elasticsearch
     echo "Load CVaaS vMME Template [Sanity test]....\n"
         python tools/onap-dump.py -H $elasticsearch -p ericsson -d tools/data/master/vMME_Config_V4_Rev.1.00_07-07-2017.json >> /home/ubuntu/cvaas-0.0.1.$1/cvaas-0.0.1.$1.log
-    
+#        python tools/onap-dump.py -H $elasticsearch -p ericsson -d tools/data/master/vMME_Config_V4_Rev.1.00_05-12-2017.json >> /home/ubuntu/cvaas-0.0.1.$1/cvaas-0.0.1.$1.log
     echo "Load CVaaS vMME Policy [Sanity test]....\n"
         python tools/onap-policy.py --host $elasticsearch -d tools/data/master/VNF-Policy_V1_Rev.1.00.json >> /home/ubuntu/cvaas-0.0.1.$1/cvaas-0.0.1.$1.log
 }

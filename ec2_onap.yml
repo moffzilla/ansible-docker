@@ -4,8 +4,9 @@
   gather_facts: False
   vars:
     key_name: generic-cloud-wk
-#    instance_type: m4.large
-    instance_type: m3.2xlarge
+#    instance_type: m4.16xlarge
+#    instance_type: m3.2xlarge
+    instance_type: r4.2xlarge
     security_group: onap
     image: ami-1d4e7a66
     region: us-east-1
@@ -62,6 +63,8 @@
     - user: name=ubuntu groups=docker append=yes
 
 # README
+# Resize the volume 60Gb then:
+#https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recognize-expanded-volume-linux.html
 # sudo docker run -d --restart=unless-stopped -p 8080:8080 rancher/server:stable
 # http://rancher.com/docs/rancher/v1.6/en/quick-start-guide/
 #https://wiki.onap.org/display/DW/ONAP+on+Kubernetes#ONAPonKubernetes-UndercloudInstallation
