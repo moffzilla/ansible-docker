@@ -57,18 +57,19 @@
   remote_user: ubuntu
   gather_facts: false
   vars:
-#    dev_version: "dev340"
-    dev_version: "dev147"
+#   dev_version: "dev350"
+    dev_version: "dev148"
     repo_name: "cvaas-staging"
 #    repo_name: "gitlab-cvaas-staging"
     cvaas_sanity_test_script: "cvaas_sanity_test_v2.sh"
+    tasks_source: "Moff/OneDrive"
   tasks:
     - name: Add Ubuntu user to Docker group
       user: name=ubuntu groups=docker append=yes
 
     - name: Stage CVaaS Load    
       unarchive: 
-        src: /root/Moff/Projects/ATT/CVaaS/git-repo/stage-area/{{repo_name}}/dist/cvaas-0.0.1.{{dev_version}}.tar.gz
+        src: /root/{{tasks_source}}/Projects/ATT/CVaaS/git-repo/stage-area/{{repo_name}}/dist/cvaas-0.0.1.{{dev_version}}.tar.gz
         dest: /home/ubuntu/
         remote_src: yes
 
@@ -92,7 +93,7 @@
 
     - name: Transfer CVaaS Testing Scripts  
       copy:
-        src: /root/Moff/Projects/ATT/CVaaS/git-repo/stage-area/cicd/{{cvaas_sanity_test_script}}
+        src: /root/{{tasks_source}}/Projects/ATT/CVaaS/git-repo/stage-area/cicd/{{cvaas_sanity_test_script}}
         dest: /home/ubuntu/cvaas-0.0.1.{{dev_version}}/
         owner: ubuntu
         group: ubuntu
@@ -105,9 +106,9 @@
     
     - fetch:
         src: /home/ubuntu/cvaas-0.0.1.{{dev_version}}/cvaas-0.0.1.{{dev_version}}.log
-        dest: /root/Moff/Projects/ATT/CVaaS/git-repo/stage-area/Logs/
+        dest: /root/{{tasks_source}}/Projects/ATT/CVaaS/git-repo/stage-area/Logs/
 
-#    - script: /root/Moff/Projects/ATT/CVaaS/git-repo/stage-area/cicd/{{cvaas_sanity_test_script}} {{elasticsearch}} {{redis}}
+#    - script: "{{tasks_source}}"/Projects/ATT/CVaaS/git-repo/stage-area/cicd/{{cvaas_sanity_test_script}} {{elasticsearch}} {{redis}}
 #      args:
 #        chdir: /home/ubuntu/cvaas-0.0.1.{{dev_version}}/
 #        creates: /home/ubuntu/cvaas-0.0.1.{{dev_version}}/cvaas-0.0.1.{{dev_version}}.log
