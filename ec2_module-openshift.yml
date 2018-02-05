@@ -1,6 +1,7 @@
 ---
 - name: Create a Atomic host for testing
 # Please note that default user is "fedora"
+# Follow Instructions from https://docs.openshift.org/latest/getting_started/administrators.html#running-in-a-docker-container
   hosts: localhost
   gather_facts: False
   vars:
@@ -22,7 +23,8 @@
 #         assign_public_ip: yes
          volumes:
            - device_name: /dev/sda1
-             volume_size: 80
+#             volume_size: 80
+             volume_size: 160
              delete_on_termination: true
       register: ec2
 
