@@ -42,5 +42,5 @@
   gather_facts: false
   tasks:
     - name: Install Python
-      raw: sudo apt install -y python-minimal
+      raw: sudo apt update && sudo apt install -y python-minimal
 
